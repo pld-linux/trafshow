@@ -1,0 +1,32 @@
+diff -r -u trafshow-3.1/interfaces.c dupa/interfaces.c
+--- trafshow-3.1/interfaces.c	Mon Sep 15 01:24:24 2003
++++ dupa/interfaces.c	Mon Sep 15 01:23:07 2003
+@@ -153,7 +153,7 @@
+ 		p = packetp + SLC_BPFHDR;	/* skip bpf pseudo header */
+ 		hdrlen = SLC_BPFHDR;
+ #endif
+-		display(NULL, p, length - hdrlen);
++		display(NULL, p , length - hdrlen);
+ 		break;
+ 	}
+ }
+@@ -235,6 +235,7 @@
+ 	{	if_slip,	DLT_SLIP_BSDOS	}, /* libpcap stupid fake */
+ #endif
+ 	{	if_ppp,		DLT_PPP		},	/* PPP */
++	{	if_slip,		DLT_LINUX_SLL	},	/* PPP */
+ #ifdef	DLT_PPP_BSDOS
+ 	{	if_ppp,		DLT_PPP_BSDOS	}, /* libpcap stupid fake */
+ #endif
+diff -r -u trafshow-3.1/trafshow.c dupa/trafshow.c
+--- trafshow-3.1/trafshow.c	Mon Sep 15 01:24:24 2003
++++ dupa/trafshow.c	Mon Sep 15 01:04:14 2003
+@@ -162,7 +162,7 @@
+ #ifdef	DLT_IEEE802
+ 	    && op != DLT_IEEE802
+ #endif
+-	    ) error(0, "interface %s not an Ethernet", device_name);
++	    ) //error(0, "interface %s not an Ethernet", device_name);
+ 
+ #ifndef INET6
+ 	if (pcap_lookupnet(device_name, &localnet, &netmask, ebuf) < 0)
