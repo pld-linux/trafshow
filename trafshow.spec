@@ -9,6 +9,8 @@ Patch1:		trafshow-pld.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Summary:	Network traffic monitoring utility
 Group:		Networking/Utilities
+BuildRequires:	libpcap-devel
+BuildRequires:	ncurses-devel
 
 %description
 trafshow is a ncurses based utility showing you in detail the network
