@@ -3,16 +3,17 @@ Summary(pl):	Narzêdzie do monitorowania ruchu w sieci
 Name:		trafshow
 Version:	2.0
 Release:	3
-Copyright:	Free copying + BSD license
-Source0:	%{name}-%{version}.tgz
+License:	Free copying + BSD license
+Group:		Networking/Utilities
+Group(de):	Netzwerkwesen/Werkzeuge
+Group(pl):	Sieciowe/Narzêdzia
+Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
 Source1:	ftp://castle.nmd.msu.ru/patches/linux-includes-1.tgz
 Patch0:		ftp://castle.nmd.msu.ru/patches/%{name}-2.0-pcap.patch
 Patch1:		%{name}-pld.patch
 Patch2:		%{name}-glibc.patch
+URL:		http://soft.risp.ru/trafshow/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Group:		Networking/Utilities
-Group(de):	Netzwerkwesen/Werkzeuge
-Group(pl):	Sieciowe/Narzêdzia
 BuildRequires:	libpcap-devel
 BuildRequires:	ncurses-devel
 
@@ -25,6 +26,16 @@ by byte counter with given interval.
 
 trafshow accept filters like tcpdump so you can inspect a required
 part of network traffic.
+
+%description -l pl
+trafshow jest opartym o ncurses narzêdziem pokazuj±cym szczegó³owo
+ruch w sieci. Pojazuje tabelê z adresami i portami ¼ród³owymi,
+adresami i portami docelowymi, protoko³em, liczb± bajtów i CPS.
+Liczniki s± uaktualniane po otrzymaniu pakietu, a tabela ponownie
+sortowana po ilo¶ci bajtów co podany czas.
+
+trafshow akceptuje filtry podobne do tcpdump, wiêc mo¿na ¶ledziæ
+wybran± czê¶æ ruchu.
 
 %prep
 %setup -q
