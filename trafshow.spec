@@ -1,18 +1,15 @@
 Summary:	Network traffic monitoring utility
 Summary(pl):	Narzêdzie do monitorowania ruchu w sieci
 Name:		trafshow
-Version:	3.1
-Release:	2
+Version:	4.0
+Release:	1
 License:	Free copying + BSD license
 Group:		Networking/Utilities
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
-# Source0-md5:	085b99f160002a269b358aab1c5004f0
-Patch0:		ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}-ipv6.patch
-# Patch0-md5:	47a711438072e690029c3abd54c9f50e
-Patch1:		%{name}-3.1-corect_ipv6.patch
-Patch2:		%{name}-3.1-show-ppp.patch
+# Source0-md5:	994355d6ba98d96ce06db9c92ae41669
 URL:		http://soft.risp.ru/trafshow/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	automake
 BuildRequires:	libpcap-devel
 BuildRequires:	ncurses-devel
 
@@ -38,13 +35,11 @@ wybran± czê¶æ ruchu.
 
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p1
-%patch2 -p1
 
 %build
-./configure
-%{__make} CC="%{__cc}" CFLAGS="-DHAVE_CONFIG_H -DINET6=1 %{rpmcflags} -I. -I%{_includedir}/ncurses -D_BSD_SOURCE=1"
+cp -f /usr/share/automake/config.sub .
+%configure2_13
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -58,6 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc README
 %attr(755,root,root) %{_sbindir}/trafshow
 %{_mandir}/man1/trafshow.1*
 %{_sysconfdir}/trafshow
