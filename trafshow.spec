@@ -45,11 +45,11 @@ wybran± czê¶æ ruchu.
 %patch2 -p1
 
 %build
-%{__make} FLAGS="%{rpmcflags} -I/usr/include/ncurses"
+%{__make} CC="%{__cc}" FLAGS="%{rpmcflags} -I%{_includedir}/ncurses -D_BSD_SOURCE=1"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man1}
 install trafshow/trafshow $RPM_BUILD_ROOT%{_sbindir}
 install trafshow.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
