@@ -1,17 +1,13 @@
 Summary:	Network traffic monitoring utility
 Summary(pl):	Narzêdzie do monitorowania ruchu w sieci
 Name:		trafshow
-Version:	2.0
-Release:	3
+Version:	3.1
+Release:	1
 License:	Free copying + BSD license
 Group:		Networking/Utilities
 Group(de):	Netzwerkwesen/Werkzeuge
 Group(pl):	Sieciowe/Narzêdzia
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
-Source1:	ftp://castle.nmd.msu.ru/patches/linux-includes-1.tgz
-Patch0:		ftp://castle.nmd.msu.ru/patches/%{name}-2.0-pcap.patch
-Patch1:		%{name}-pld.patch
-Patch2:		%{name}-glibc.patch
 URL:		http://soft.risp.ru/trafshow/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	libpcap-devel
@@ -39,18 +35,15 @@ wybran± czê¶æ ruchu.
 
 %prep
 %setup -q
-%setup -q -D -T -a 1
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
+./configure 
 %{__make} CC="%{__cc}" FLAGS="%{rpmcflags} -I%{_includedir}/ncurses -D_BSD_SOURCE=1"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man1}
-install trafshow/trafshow $RPM_BUILD_ROOT%{_sbindir}
+install trafshow $RPM_BUILD_ROOT%{_sbindir}
 install trafshow.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
