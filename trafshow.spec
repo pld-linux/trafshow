@@ -8,10 +8,10 @@ Group:		Networking/Utilities
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
 # Source0-md5:	994355d6ba98d96ce06db9c92ae41669
 URL:		http://soft.risp.ru/trafshow/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	automake
 BuildRequires:	libpcap-devel
 BuildRequires:	ncurses-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 trafshow is a ncurses based utility showing you in detail the network
