@@ -1,15 +1,18 @@
+Summary:	Network traffic monitoring utility
+Summary(pl):	Narzêdzie do monitorowania ruchu w sieci
 Name:		trafshow
 Version:	2.0
 Release:	3
 Copyright:	Free copying + BSD license
-Source0:	trafshow-2.0.tgz
+Source0:	%{name}-%{version}.tgz
 Source1:	ftp://castle.nmd.msu.ru/patches/linux-includes-1.tgz
-Patch0:		ftp://castle.nmd.msu.ru/patches/trafshow-2.0-pcap.patch
-Patch1:		trafshow-pld.patch
-Patch2:		trafshow-glibc.patch
+Patch0:		ftp://castle.nmd.msu.ru/patches/%{name}-2.0-pcap.patch
+Patch1:		%{name}-pld.patch
+Patch2:		%{name}-glibc.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Summary:	Network traffic monitoring utility
 Group:		Networking/Utilities
+Group(de):	Netzwerkwesen/Werkzeuge
+Group(pl):	Sieciowe/Narzêdzia
 BuildRequires:	libpcap-devel
 BuildRequires:	ncurses-devel
 
@@ -31,17 +34,18 @@ part of network traffic.
 %patch2 -p1
 
 %build
-%{__make} FLAGS="$RPM_OPT_FLAGS -I/usr/include/ncurses"
+%{__make} FLAGS="%{rpmcflags} -I/usr/include/ncurses"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sbindir}
-install -d $RPM_BUILD_ROOT%{_prefix}/man/man1
-install -s -m 0755 trafshow/trafshow $RPM_BUILD_ROOT%{_sbindir}
-install -m 0644 trafshow.1 $RPM_BUILD_ROOT%{_prefix}/man/man1
-bzip2 $RPM_BUILD_ROOT%{_prefix}/man/man1/trafshow.1
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{mandir}/man1}
+install trafshow/trafshow $RPM_BUILD_ROOT%{_sbindir}
+install trafshow.1 $RPM_BUILD_ROOT%{_mandir}/man1
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/trafshow
-%{_prefix}/man/man1/trafshow.1.bz2
+%{_mandir}/man1/trafshow.1*
