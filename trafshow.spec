@@ -1,11 +1,12 @@
 Name:		trafshow
 Version:	2.0
-Release:	2
+Release:	3
 Copyright:	Free copying + BSD license
 Source0:	trafshow-2.0.tgz
 Source1:	ftp://castle.nmd.msu.ru/patches/linux-includes-1.tgz
 Patch0:		ftp://castle.nmd.msu.ru/patches/trafshow-2.0-pcap.patch
 Patch1:		trafshow-pld.patch
+Patch2:		trafshow-glibc.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Summary:	Network traffic monitoring utility
 Group:		Networking/Utilities
@@ -24,12 +25,13 @@ part of network traffic.
 
 %prep
 %setup -q
-%setup -D -T -a 1
+%setup -q -D -T -a 1
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-%{__make}
+%{__make} FLAGS="$RPM_OPT_FLAGS -I/usr/include/ncurses"
 
 %install
 rm -rf $RPM_BUILD_ROOT
