@@ -5,10 +5,6 @@ Version:	3.1
 Release:	1
 License:	Free copying + BSD license
 Group:		Networking/Utilities
-Group(de):	Netzwerkwesen/Werkzeuge
-Group(es):	Red/Utilitarios
-Group(pl):	Sieciowe/Narzêdzia
-Group(pt_BR):	Rede/Utilitários
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
 URL:		http://soft.risp.ru/trafshow/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
