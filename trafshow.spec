@@ -35,7 +35,7 @@ wybran± czê¶æ ruchu.
 %setup -q
 
 %build
-./configure 
+./configure
 %{__make} CC="%{__cc}" FLAGS="%{rpmcflags} -I%{_includedir}/ncurses -D_BSD_SOURCE=1"
 
 %install
