@@ -7,6 +7,9 @@ License:	Free copying + BSD license
 Group:		Networking/Utilities
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
 # Source0-md5:	085b99f160002a269b358aab1c5004f0
+Source1:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}-ipv6.patch
+# Source1-md5:	47a711438072e690029c3abd54c9f50e
+Patch0:		%{name}-3.1-corect_ipv6.patch
 URL:		http://soft.risp.ru/trafshow/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	libpcap-devel
@@ -34,16 +37,19 @@ wybran± czê¶æ ruchu.
 
 %prep
 %setup -q
+patch -p0 < %{SOURCE1}
+%patch0 -p1
 
 %build
 ./configure
-%{__make} CC="%{__cc}" FLAGS="%{rpmcflags} -I%{_includedir}/ncurses -D_BSD_SOURCE=1"
+%{__make} CC="%{__cc}" CFLAGS="-DHAVE_CONFIG_H -DINET6=1 %{rpmcflags} -I. -I%{_includedir}/ncurses -D_BSD_SOURCE=1"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man1,%{_sysconfdir}}
 install trafshow $RPM_BUILD_ROOT%{_sbindir}
 install trafshow.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install .trafshow $RPM_BUILD_ROOT%{_sysconfdir}/trafshow
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -52,3 +58,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/trafshow
 %{_mandir}/man1/trafshow.1*
+%{_sysconfdir}/trafshow
