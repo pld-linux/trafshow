@@ -7,10 +7,10 @@ License:	Free copying + BSD license
 Group:		Networking/Utilities
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
 # Source0-md5:	085b99f160002a269b358aab1c5004f0
-Source1:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}-ipv6.patch
-# Source1-md5:	47a711438072e690029c3abd54c9f50e
-Patch0:		%{name}-3.1-corect_ipv6.patch
-Patch1:		%{name}-3.1-show-ppp.patch
+Patch0:		ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}-ipv6.patch
+# Patch0-md5:	47a711438072e690029c3abd54c9f50e
+Patch1:		%{name}-3.1-corect_ipv6.patch
+Patch2:		%{name}-3.1-show-ppp.patch
 URL:		http://soft.risp.ru/trafshow/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	libpcap-devel
@@ -38,9 +38,9 @@ wybran± czê¶æ ruchu.
 
 %prep
 %setup -q
-patch -p0 < %{SOURCE1}
-%patch0 -p1
+%patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 ./configure
