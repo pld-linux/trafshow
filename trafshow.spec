@@ -10,6 +10,7 @@ Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
 Source1:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}-ipv6.patch
 # Source1-md5:	47a711438072e690029c3abd54c9f50e
 Patch0:		%{name}-3.1-corect_ipv6.patch
+Patch1:		%{name}-3.1-show-ppp.patch
 URL:		http://soft.risp.ru/trafshow/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	libpcap-devel
@@ -39,6 +40,7 @@ wybran± czê¶æ ruchu.
 %setup -q
 patch -p0 < %{SOURCE1}
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./configure
