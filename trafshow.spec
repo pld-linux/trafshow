@@ -25,7 +25,7 @@ part of network traffic.
 
 %description -l pl
 trafshow jest opartym o ncurses narzêdziem pokazuj±cym szczegó³owo
-ruch w sieci. Pojazuje tabelê z adresami i portami ¼ród³owymi,
+ruch w sieci. Pokazuje tabelê z adresami i portami ¼ród³owymi,
 adresami i portami docelowymi, protoko³em, liczb± bajtów i CPS.
 Liczniki s± uaktualniane po otrzymaniu pakietu, a tabela ponownie
 sortowana po ilo¶ci bajtów co podany czas.
