@@ -1,6 +1,6 @@
 Name:		trafshow
 Version:	2.0
-Release:	1
+Release:	2
 Copyright:	Free copying + BSD license
 Source0:	trafshow-2.0.tgz
 Source1:	ftp://castle.nmd.msu.ru/patches/linux-includes-1.tgz
