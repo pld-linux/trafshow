@@ -17,7 +17,7 @@
  endif
  DEFINE	=
 -LIB	= ../lib/libbpft.a -L../libpcap -lncurses -ltermcap -lpcap
-+LIB	= ../lib/libbpft.a -lpcap -lncurses -lpcap
++LIB	= ../lib/libbpft.a -lncurses -lpcap
  
 -BINDIR	= /usr/local/bin
 -MANDIR	= /usr/local/man/man1
