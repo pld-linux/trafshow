@@ -6,6 +6,7 @@ Release:	1
 License:	Free copying + BSD license
 Group:		Networking/Utilities
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
+# Source0-md5:	085b99f160002a269b358aab1c5004f0
 URL:		http://soft.risp.ru/trafshow/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	libpcap-devel
