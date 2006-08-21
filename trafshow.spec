@@ -1,20 +1,18 @@
 Summary:	Network traffic monitoring utility
 Summary(pl):	Narzêdzie do monitorowania ruchu w sieci
 Name:		trafshow
-Version:	3.1
+Version:	5.2.3
 Release:	1
 License:	Free copying + BSD license
 Group:		Networking/Utilities
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
-# Source0-md5:	085b99f160002a269b358aab1c5004f0
-Source1:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}-ipv6.patch
-# Source1-md5:	47a711438072e690029c3abd54c9f50e
-Patch0:		%{name}-3.1-corect_ipv6.patch
-Patch1:		%{name}-3.1-show-ppp.patch
+# Source0-md5:	0b2f0bb23b7832138b7d841437b9e182
 URL:		http://soft.risp.ru/trafshow/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	automake
 BuildRequires:	libpcap-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	sed >= 4.0
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 trafshow is a ncurses based utility showing you in detail the network
@@ -28,7 +26,7 @@ part of network traffic.
 
 %description -l pl
 trafshow jest opartym o ncurses narzêdziem pokazuj±cym szczegó³owo
-ruch w sieci. Pojazuje tabelê z adresami i portami ¼ród³owymi,
+ruch w sieci. Pokazuje tabelê z adresami i portami ¼ród³owymi,
 adresami i portami docelowymi, protoko³em, liczb± bajtów i CPS.
 Liczniki s± uaktualniane po otrzymaniu pakietu, a tabela ponownie
 sortowana po ilo¶ci bajtów co podany czas.
@@ -38,13 +36,12 @@ wybran± czê¶æ ruchu.
 
 %prep
 %setup -q
-patch -p0 < %{SOURCE1}
-%patch0 -p1
-%patch1 -p1
+sed -i 's/static//' screen.c
 
 %build
-./configure
-%{__make} CC="%{__cc}" CFLAGS="-DHAVE_CONFIG_H -DINET6=1 %{rpmcflags} -I. -I%{_includedir}/ncurses -D_BSD_SOURCE=1"
+cp -f /usr/share/automake/config.sub .
+%configure2_13
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -58,6 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc CHANGES README
 %attr(755,root,root) %{_sbindir}/trafshow
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/trafshow
 %{_mandir}/man1/trafshow.1*
-%{_sysconfdir}/trafshow
