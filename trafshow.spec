@@ -11,6 +11,7 @@ URL:		http://soft.risp.ru/trafshow/
 BuildRequires:	automake
 BuildRequires:	libpcap-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -54,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc CHANGES README
 %attr(755,root,root) %{_sbindir}/trafshow
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/trafshow
 %{_mandir}/man1/trafshow.1*
-%{_sysconfdir}/trafshow
