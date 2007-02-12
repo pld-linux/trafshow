@@ -1,5 +1,5 @@
 Summary:	Network traffic monitoring utility
-Summary(pl):	Narzêdzie do monitorowania ruchu w sieci
+Summary(pl.UTF-8):   NarzÄ™dzie do monitorowania ruchu w sieci
 Name:		trafshow
 Version:	5.2.3
 Release:	1
@@ -24,15 +24,15 @@ by byte counter with given interval.
 trafshow accept filters like tcpdump so you can inspect a required
 part of network traffic.
 
-%description -l pl
-trafshow jest opartym o ncurses narzêdziem pokazuj±cym szczegó³owo
-ruch w sieci. Pokazuje tabelê z adresami i portami ¼ród³owymi,
-adresami i portami docelowymi, protoko³em, liczb± bajtów i CPS.
-Liczniki s± uaktualniane po otrzymaniu pakietu, a tabela ponownie
-sortowana po ilo¶ci bajtów co podany czas.
+%description -l pl.UTF-8
+trafshow jest opartym o ncurses narzÄ™dziem pokazujÄ…cym szczegÃ³Å‚owo
+ruch w sieci. Pokazuje tabelÄ™ z adresami i portami ÅºrÃ³dÅ‚owymi,
+adresami i portami docelowymi, protokoÅ‚em, liczbÄ… bajtÃ³w i CPS.
+Liczniki sÄ… uaktualniane po otrzymaniu pakietu, a tabela ponownie
+sortowana po iloÅ›ci bajtÃ³w co podany czas.
 
-trafshow akceptuje filtry podobne do tcpdump, wiêc mo¿na ¶ledziæ
-wybran± czê¶æ ruchu.
+trafshow akceptuje filtry podobne do tcpdump, wiÄ™c moÅ¼na Å›ledziÄ‡
+wybranÄ… czÄ™Å›Ä‡ ruchu.
 
 %prep
 %setup -q
