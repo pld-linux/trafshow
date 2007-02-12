@@ -1,5 +1,5 @@
 Summary:	Network traffic monitoring utility
-Summary(pl.UTF-8):   Narzędzie do monitorowania ruchu w sieci
+Summary(pl.UTF-8):	Narzędzie do monitorowania ruchu w sieci
 Name:		trafshow
 Version:	5.2.3
 Release:	1
