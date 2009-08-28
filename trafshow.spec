@@ -2,11 +2,12 @@ Summary:	Network traffic monitoring utility
 Summary(pl.UTF-8):	Narzędzie do monitorowania ruchu w sieci
 Name:		trafshow
 Version:	5.2.3
-Release:	1
+Release:	2
 License:	Free copying + BSD license
 Group:		Networking/Utilities
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
 # Source0-md5:	0b2f0bb23b7832138b7d841437b9e182
+Patch0:		%{name}-preprocessor.patch
 URL:		http://soft.risp.ru/trafshow/
 BuildRequires:	automake
 BuildRequires:	libpcap-devel
@@ -36,6 +37,7 @@ wybraną część ruchu.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i 's/static//' screen.c
 
 %build
