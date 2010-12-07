@@ -2,7 +2,7 @@ Summary:	Network traffic monitoring utility
 Summary(pl.UTF-8):	Narzędzie do monitorowania ruchu w sieci
 Name:		trafshow
 Version:	5.2.3
-Release:	3
+Release:	4
 License:	Free copying + BSD license
 Group:		Networking/Utilities
 Source0:	ftp://ftp.nsk.su/pub/RinetSoftware/%{name}-%{version}.tgz
