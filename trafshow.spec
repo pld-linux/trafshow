@@ -42,6 +42,7 @@ sed -i 's/static//' screen.c
 
 %build
 cp -f /usr/share/automake/config.sub .
+export LIBS="-ltinfo"
 %configure2_13
 %{__make}
 
